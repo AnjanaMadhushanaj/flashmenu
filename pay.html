@@ -1,0 +1,154 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Scan & Pay</title>
+  <script src="https://unpkg.com/html5-qrcode"></script>
+  <link rel="stylesheet" href="pay.css" />
+ 
+</head>
+<body>
+
+  <div class="logo-top-center">
+    <img src="https://i.postimg.cc/ydDYN302/logo-removebg.png" alt="logo" class="logo">
+  </div>
+
+  <div class="wrapper">
+
+    <!-- Navigation Icons inside wrapper -->
+    <div class="top-nav-icons">
+      <a href="index.html" class="icon-btn" title="Home">
+        <img src="https://cdn-icons-png.flaticon.com/512/25/25694.png" alt="Home">
+      </a>
+      <a href="menu.html" class="icon-btn" title="Payments">
+        <img src="https://i.postimg.cc/ydSdHTzN/2025-04-12-21-37-55-removebg-preview.png" alt="Payments">
+      </a>
+    </div>
+
+    <h1>🧾 Pay Your Bill</h1>
+    <form id="paymentForm" method="POST" action="https://sandbox.payhere.lk/pay/checkout">
+      <input type="hidden" name="merchant_id" value="121XXXX">
+      <input type="hidden" name="return_url" value="http://sample.com/return">
+      <input type="hidden" name="cancel_url" value="http://sample.com/cancel">
+      <input type="hidden" name="notify_url" value="http://sample.com/notify">
+
+      <div class="form-group">
+        <label for="orderId">Order ID</label>
+        <input type="text" id="orderId" name="order_id" placeholder="Enter Order ID" required>
+      </div>
+
+      <div class="form-group">
+        <label for="items">Items</label>
+        <input type="text" id="items" name="items" placeholder="Eg: Fried Rice x2" required>
+      </div>
+
+      <div class="form-group">
+        <label for="total">Total Amount (Rs)</label>
+        <input type="number" id="total" name="amount" placeholder="Eg: 2500" required>
+      </div>
+
+      <input type="hidden" name="first_name" value="Customer">
+      <input type="hidden" name="last_name" value="Name">
+      <input type="hidden" name="email" value="customer@example.com">
+      <input type="hidden" name="phone" value="0771234567">
+      <input type="hidden" name="address" value="No.1, Galle Road">
+      <input type="hidden" name="city" value="Colombo">
+      <input type="hidden" name="country" value="Sri Lanka">
+
+      <button type="button" onclick="openScanner()">📷 Scan QR / Barcode</button>
+      <div id="scanResult"></div>
+
+      <button type="submit" id="payButton" disabled>💳 Pay Now</button>
+    </form>
+  </div>
+
+  <!-- QR Scanner Overlay -->
+  <div id="qr-overlay">
+    <div id="qr-reader"></div>
+    <button id="close-btn" onclick="closeScanner()">Close</button>
+  </div>
+
+  <script>
+    let qrScanner;
+let isScanning = false;
+
+function openScanner() {
+  const overlay = document.getElementById("qr-overlay");
+  overlay.style.display = "flex";
+  document.getElementById("scanResult").innerText = "Initializing scanner...";
+
+  if (isScanning) return; // Prevent double start
+  isScanning = true;
+
+  qrScanner = new Html5Qrcode("qr-reader");
+
+  Html5Qrcode.getCameras()
+    .then(cameras => {
+      if (cameras && cameras.length) {
+        const backCam = cameras.find(cam => cam.label.toLowerCase().includes("back")) || cameras[0];
+
+        return qrScanner.start(
+          backCam.id,
+          {
+            fps: 10,
+            qrbox: 250
+          },
+          qrCodeMessage => {
+            try {
+              const data = JSON.parse(qrCodeMessage);
+              if (data.orderId && data.items && data.amount) {
+                document.getElementById("orderId").value = data.orderId;
+                document.getElementById("items").value = data.items;
+                document.getElementById("total").value = data.amount;
+                document.getElementById("payButton").disabled = false;
+                document.getElementById("scanResult").innerText = "✅ Scanned successfully!";
+              } else {
+                document.getElementById("scanResult").innerText = "⚠️ Missing data in QR code!";
+              }
+            } catch (e) {
+              document.getElementById("scanResult").innerText = "❌ Invalid QR code format!";
+              console.error("QR code parsing error:", e);
+            }
+
+            stopScanner(); // Auto stop after successful scan
+          },
+          errorMsg => {
+            console.log("Scanning... ", errorMsg);
+          }
+        );
+      } else {
+        document.getElementById("scanResult").innerText = "❌ No camera found!";
+      }
+    })
+    .catch(err => {
+      console.error("Camera init failed:", err);
+      document.getElementById("scanResult").innerText = "❌ Camera access error. Check permissions.";
+    });
+}
+
+function stopScanner() {
+  if (qrScanner && isScanning) {
+    qrScanner.stop()
+      .then(() => {
+        qrScanner.clear();
+        isScanning = false;
+        document.getElementById("qr-overlay").style.display = "none";
+      })
+      .catch(err => {
+        console.warn("Error stopping scanner:", err);
+      });
+  } else {
+    document.getElementById("qr-overlay").style.display = "none";
+  }
+}
+
+function closeScanner() {
+  stopScanner();
+}
+
+  </script>
+  
+</body>
+</body>
+</html>

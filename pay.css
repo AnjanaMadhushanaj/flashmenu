@@ -1,0 +1,186 @@
+body {
+    margin: 0;
+    padding: 0;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    height: 100vh;
+    background-image: url('https://i.postimg.cc/ZqzJ0RPD/pexels-davefilm-2540653.jpg');
+    background-size: cover;
+    background-position: center;
+    background-attachment: fixed;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    color: white;
+  }
+  
+  .logo-top-center {
+    margin-top: 80px;
+    margin-bottom: -80px;
+    z-index: 10;
+  }
+  
+  .logo {
+    width: 300px;
+    height: 60px;
+    padding-top: 10px;
+    background-color: #cccccc47;
+    border-radius: 5px;
+    object-fit: cover;
+    border: 1px solid white;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
+  }
+  
+  .wrapper {
+    width: 500px;
+    background-color: rgba(0, 0, 0, 0.6);
+    padding: 40px;
+    border-radius: 15px;
+    box-shadow: 0 0 15px rgba(0,0,0,0.7);
+    margin-top: 100px;
+    text-align: center;
+    position: relative;
+  }
+  
+  .top-nav-icons {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 100%;
+    margin-bottom: 20px;
+    gap: 20px;
+  }
+  
+  .icon-btn {
+    background-color: rgba(255, 255, 255, 0.1);
+    padding: 10px;
+    border-radius: 12px;
+    transition: background 0.3s ease, transform 0.2s ease;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.4);
+  }
+  
+  .icon-btn:hover {
+    background-color: rgba(255, 255, 255, 0.2);
+    transform: scale(1.05);
+  }
+  
+  .icon-btn img {
+    width: 32px;
+    height: 32px;
+    object-fit: contain;
+    filter: invert(100%);
+  }
+  
+  .wrapper h1 {
+    color: #ffcc00;
+    margin-bottom: 25px;
+  }
+  
+  .form-group {
+    margin-bottom: 20px;
+    text-align: left;
+  }
+  
+  .form-group label {
+    display: block;
+    font-weight: bold;
+    margin-bottom: 5px;
+  }
+  
+  .form-group input {
+    width: 100%;
+    padding: 10px;
+    border-radius: 8px;
+    border: none;
+    font-size: 15px;
+  }
+  
+  button {
+    padding: 12px 25px;
+    font-size: 16px;
+    background-color: #28a745;
+    color: white;
+    border: none;
+    border-radius: 25px;
+    cursor: pointer;
+    transition: background 0.3s ease;
+    margin-top: 20px;
+  }
+  
+  button:hover {
+    background-color: #218838;
+  }
+  
+  #scanResult {
+    margin-top: 20px;
+    font-weight: bold;
+    color: #00ff95;
+  }
+  
+  #qr-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    background-color: rgba(0, 0, 0, 0.9);
+    display: none;
+    justify-content: center;
+    align-items: center;
+    z-index: 9999;
+    flex-direction: column;
+  }
+  
+  #qr-reader {
+    width: 300px;
+    max-width: 90vw;
+  }
+  
+  #close-btn {
+    margin-top: 15px;
+    padding: 10px 20px;
+    background-color: red;
+    border: none;
+    color: white;
+    border-radius: 10px;
+    cursor: pointer;
+  }
+  
+  
+  /* 📱 Mobile Responsiveness */
+  @media (max-width: 450px) {
+    .logo {  
+      width: 180px;
+      height: 50px;
+    }
+  
+    .wrapper {
+      width: 75%;
+      padding: 20px;
+      margin-top: 100px;
+    }
+  
+    .form-group input {
+      font-size: 14px;
+      width: 90%;
+    }
+  
+    button {
+      width: 80%;
+      font-size: 15px;
+    }
+  
+    .icon-btn img {
+      width: 0px;
+      height: 0px;
+    }
+  
+    .top-nav-icons {
+      display: none;
+      
+    }
+  
+    #qr-reader {
+      width: 90vw;
+    }
+  }
+  

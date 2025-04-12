@@ -1,0 +1,243 @@
+/* General Body Styles */
+body {
+  margin: 0;
+  padding: 0;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  height: 100vh;
+  background-image: url('https://i.postimg.cc/ZqzJ0RPD/pexels-davefilm-2540653.jpg');
+  background-size: cover; /* Ensures the background image covers the entire screen */
+  background-position: center top; /* Aligns the image to the top and centers it horizontally */
+  background-repeat: no-repeat; /* Prevents the background from repeating */
+  background-attachment: fixed; /* Keeps the background fixed in place */
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+/* 0. Logo container for top-left positioning */
+.logo-container {
+  margin-left: auto;
+  margin-right: auto;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+/* Logo image style */
+.logo {
+  width: 300px;
+  height: 60px;
+  padding-top: 10px;
+  background-color: #fcffff47;
+  border-radius: 5px;
+  object-fit: cover;
+  border: 1px solid white;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
+}
+
+/* Navigation Bar Styles */
+.top-nav-icons {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 10px 30px;
+}
+
+.icon-btn {
+  display: flex;
+  align-items: center;
+  cursor: pointer;
+}
+
+.icon-btn img {
+  width: 35px;
+  height: 35px;
+  transition: transform 0.2s ease;
+  filter: brightness(0) invert(1); /* Makes the icon white */
+}
+
+.icon-btn img:hover {
+  transform: scale(1.2);
+}
+
+.icon-btn.right {
+  margin-left: auto;
+}
+
+/* Container Styles */
+.container {
+  padding: 2rem;
+  width: 1400px;
+  margin-top: 150px;
+  min-height: min-content;
+  margin-left: auto;
+  margin-right: auto;
+  background: rgba(0, 0, 0, 0.411);
+  border-radius: 20px;
+  box-shadow: 0 8px 15px rgb(0, 0, 0);
+  overflow: hidden;
+  padding-bottom: 3rem;
+}
+
+/* Header Styling */
+h1 {
+  font-size: 3rem;
+  margin-bottom: 1rem;
+  color: #ff9900;
+  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.7);
+  font-weight: bold;
+  text-align: center;
+}
+
+/* Sub-header Styling */
+h2 {
+  font-size: 1.8rem;
+  margin-bottom: 2rem;
+  color: #fff;
+}
+
+/* List Styling */
+ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-evenly; /* Distribute items evenly */
+}
+
+/* Individual Menu Item Styling */
+li {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: start;
+  background-color: #01255e6b;
+  margin: 15px;
+  padding: 10px 10px 10px 10px;
+  width: 400px;
+  height: auto;
+  border-radius: 15px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.4);
+  transition: transform 0.3s ease-in-out;
+}
+
+li:hover {
+  transform: scale(1.05);
+}
+
+/* Image Styling */
+.menu-img {
+  width: 200px;
+  height: 200px;
+  object-fit: cover;
+  border-radius: 50%; /* Makes it a perfect circle */
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.2);
+  margin-right: 15px;
+}
+
+/* Menu Item Info Styling */
+.menu-info {
+  text-align: left;
+}
+
+.menu-info strong {
+  font-size: 1.4rem;
+  color: #ffcc00;
+}
+
+.menu-info span {
+  font-size: 1.2rem;
+  color: #fff;
+  font-weight: 500;
+}
+
+/* 📱 Mobile Devices Only (Up to 450px width) */
+@media (max-width: 450px) {
+  .logo {
+    background-color: #fcffff47;
+    width: 180px;
+    height: 50px;
+  }
+
+  h1 {
+    font-size: 1.5rem;
+    padding-bottom: 50px;
+    margin-top: 100px;
+  }
+
+  h2 {
+    font-size: 1rem;
+    text-align: center;
+  }
+
+  .container {
+    width: 90%;
+    padding: 1rem;
+    margin-top: 50px;
+    border-radius: 15px;
+  }
+
+  /* Ensure the items are two per line and align them to the right */
+  ul {
+    display: flex;
+    flex-wrap: wrap; /* Allow items to wrap into new lines */
+    justify-content: flex-start; /* Align items to the left */
+    padding: 0;
+    margin: 0;
+  }
+
+  li {
+    width: 90%;
+    padding: 15px;
+    margin-left: auto;
+    margin-right: auto;
+    margin-bottom: 10px;
+    flex-direction: column;
+    align-items: center;
+    background-color: #01255e6b;
+    border-radius: 15px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.4);
+    transition: transform 0.3s ease-in-out;
+    display: flex; /* Use flex for the image and text to align */
+    flex-direction: row; /* Align image and text in a row */
+    justify-content: space-between;
+  }
+
+  li:hover {
+    transform: scale(1.05);
+  }
+
+  /* Align image and text together */
+  .menu-img {
+    width: 150px;
+    height: 150px;
+    margin-right: 15px;
+  }
+
+  .menu-info {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: flex-start;
+  }
+
+  .menu-info strong {
+    font-size: 1.2rem;
+  }
+
+  .menu-info span {
+    font-size: 1rem;
+  }
+
+  .icon-btn img {
+    width: 0px;
+    height: 0px;
+  }
+
+  /* Add styles for top navigation icons */
+  .top-nav-icons {
+    flex-direction: column;
+    gap: 10px;
+  }
+}

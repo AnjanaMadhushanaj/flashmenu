@@ -1,0 +1,254 @@
+/* 1. Body with background image */
+body {
+    margin: 0;
+    padding: 0;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    height: 100vh;
+    background-image: url('https://i.postimg.cc/ZqzJ0RPD/pexels-davefilm-2540653.jpg');
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+/* 0. Logo container for top-left positioning */
+.logo-top-center {
+    position: absolute;
+    top:150px;
+    left: 50%;
+    transform: translateX(-50%);
+    z-index: 10;
+}
+
+
+/* Logo image style */
+.logo {
+    width: 300px;
+    height: 60px;
+    padding-top: 10px;
+    background-color: #cccccc47;
+    border-radius: 5px;
+    object-fit: cover;
+    border: 1px solid white; 
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.5); 
+}
+
+/* Wrapper box (semi-transparent) */
+.wrapper {
+    width: 500px;
+    height: 200px;
+    margin-top: 300px;
+    background-color: rgba(0, 0, 0, 0.411); 
+    padding: 100px 50px;
+    border-radius: 15px;
+    box-shadow: 0 0 15px rgba(0,0,0,0.6);
+    text-align: center;
+}
+/* Redesigned social icons */
+.social-icons {
+    margin-top: 40px;
+    display: flex;
+    justify-content: center;
+    gap: 25px;
+    padding: 10px 0;
+    background: rgba(255, 255, 255, 0.05);
+    backdrop-filter: blur(8px);
+    border-radius: 15px;
+    box-shadow: 0 0 10px rgba(255, 255, 255, 0.1);
+    transition: background 0.3s ease;
+}
+
+.social-icons a img {
+    width: 35px;
+    height: 35px;
+    border-radius: 50%;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.social-icons a img:hover {
+    transform: scale(1.2);
+    box-shadow: 0 0 10px rgba(255, 255, 255, 0.5);
+}
+
+
+/* 3. Nav styling */
+nav ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+}
+
+/* 4. Nav link buttons */
+nav li a {
+    width: 400px;
+    display: block;
+    padding: 15px 40px;
+    background-color: #303b4d9d;
+    color: #ffcc00;
+    border: 1px solid #ccc;
+    border-radius: 25px;
+    text-decoration: none;
+    font-weight: bold;
+    font-size: large;
+    min-width: 160px;
+    transition: all 0.3s ease;
+}
+
+/* 5. Hover effect */
+nav li a:hover {
+    background-color: #012e63;
+    transform: translateY(-3px);
+}
+/* Top-links inside the wrapper - beautiful and consistent */
+.top-links {
+    margin-top: 40px;
+}
+
+.top-links ul {
+    list-style: none;
+    padding: 0;
+    display: flex;
+    justify-content: center;
+    gap: 25px;
+    flex-wrap: wrap;
+}
+
+.top-links li a {
+    display: inline-block;
+    padding: 12px 30px;
+    background-color: #303b4d9d;
+    color: #ffcc00;
+    border: 1px solid #ccc;
+    border-radius: 25px;
+    text-decoration: none;
+    font-weight: bold;
+    font-size: 1rem;
+    transition: all 0.3s ease;
+}
+
+.top-links li a:hover {
+    background-color: #012e63;
+    color: white;
+    transform: translateY(-3px);
+}
+
+/* 📱 Mobile Devices (up to ~450px width) */
+@media (max-width: 320px) {
+    .logo-top-center {
+        top: 200px;
+        margin-left: auto;
+        margin-right: auto;
+    }
+
+    .logo {
+        width: 150px;
+        height: 50px;
+        padding: 5px 10px;
+        background-color: #cccccc47;
+        border-radius: 5px;
+        border: 1px solid white;
+        box-shadow: 0 0 6px rgba(0, 0, 0, 0.4);
+    }
+
+    .wrapper {
+        width: 80%;
+        height: auto;
+        padding: 30px 15px;
+        margin-top: 0px;
+        height: auto;
+    }
+
+    nav ul {
+        gap: 10px;
+    }
+
+    nav li a {
+        width: 80%;
+        padding: 10px 30px;
+        font-size: 0.9rem;
+        margin-left: auto;
+        margin-right: auto;
+    }
+
+    .top-links li a {
+        font-size: 0.8rem;
+        padding: 8px 12px;
+    }
+
+    .top-links {
+        margin-top: 25px;
+    }
+
+    .top-links li a {
+        padding: 8px 16px;
+        font-size: 0.85rem;
+    }
+
+    .social-icons {
+        margin-top: 20px;
+        gap: 20px;
+        padding: 6px 0;
+    }
+
+    .social-icons a img {
+        width: 28px;
+        height: 28px;
+    }
+}
+
+/* 💻 Medium Devices (451px to 1024px) */
+@media (min-width: 100px) and (max-width: 1024px) {
+    .logo-top-center {
+        top: 100px;
+        margin-left: auto;
+        margin-right: auto;
+    }
+
+    .logo {
+        width: 200px;
+        height: 50px;
+        padding: 5px 20px;
+    }
+
+    .wrapper {
+        width: 70%;
+        padding: 60px 30px;
+        margin-top: 180px;
+        height: auto;
+    }
+
+    nav li a {
+        width: 60%;
+        font-size: 1rem;
+        margin-left: auto;
+        margin-right: auto;
+    }
+
+    .top-links li a {
+        font-size: 0.9rem
+    }
+
+    .top-links li a {
+        font-size: 1rem;
+        padding: 10px 15px;
+    }
+
+    .social-icons {
+        gap: 18px;
+        margin-top: 30px;
+    }
+
+    .social-icons a img {
+        width: 32px;
+        height: 32px;
+    }
+}
+
+
+/* 💻 Larger Devices - keep original style (no change needed) */
+
