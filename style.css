@@ -152,10 +152,10 @@ li:hover {
   font-weight: 500;
 }
 
-/* 📱 Mobile Devices Only (Up to 450px width) */
+/* 📱 Mobile Devices Only (Up to 450px width)#fcffff57 */
 @media (max-width: 450px) {
   .logo {
-    background-color: #fcffff47;
+    background-color: red;
     width: 180px;
     height: 50px;
   }
